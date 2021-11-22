@@ -14,7 +14,6 @@
         "drupal/entity_embed": "^1.0",
         "drupal/image_widget_crop": "^2.1",
         "drupal/inline_entity_form": "^1.0-rc7",
-        "govcore/govcore_core": "^1.0",
         "drupal/media_entity_instagram": "^3",
         "drupal/media_entity_twitter": "^2.5",
         "drupal/slick_entityreference": "^2.0",
@@ -22,7 +21,8 @@
         "drupal/views_infinite_scroll": "^1.6",
         "npm-asset/dropzone": "^5.7.4",
         "oomphinc/composer-installers-extender": "^1.1 || ^2",
-        "vardot/blazy": "^1.8"
+        "vardot/blazy": "^1.8",
+        "govcore/govcore_core": "^1.0"
     },
     "require-dev": {
         "drupal/core-composer-scaffold": "*",
@@ -90,7 +90,7 @@
         },
         "assets": {
             "type": "composer",
-            "url": "https://asset-packagist.org"
+            "url": "https://asset-packagist.org",
         },
         "govcore": {
             "type": "vcs",
