@@ -1,0 +1,8 @@
+name: 'Bulk Media Upload'
+core_version_requirement: '^8.8 || ^9'
+type: module
+description: 'Provides a form to upload many media items at once.'
+package: GovCore
+dependencies:
+  - dropzonejs:dropzonejs
+  - govcore_media:govcore_media

@@ -1,0 +1,5 @@
+govcore_media.settings:
+  title: 'Media'
+  description: 'Configure GovCore Media settings.'
+  parent: govcore_core.settings
+  route_name: govcore_media.settings

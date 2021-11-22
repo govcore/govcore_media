@@ -1,0 +1,11 @@
+{
+    "name": "govcore/govcore_media_video",
+    "type": "drupal-module",
+    "description": "Video support for GovCore Media.",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Drupal\\Tests\\govcore_media_video\\": "tests/src"
+        }
+    }
+}

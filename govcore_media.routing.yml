@@ -1,0 +1,7 @@
+govcore_media.settings:
+  path: '/admin/config/system/govcore/media'
+  defaults:
+    _title: GovCore Media
+    _form: '\Drupal\govcore_media\Form\SettingsForm'
+  requirements:
+    _is_administrator: 'true'

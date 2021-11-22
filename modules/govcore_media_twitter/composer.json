@@ -1,0 +1,6 @@
+{
+    "name": "govcore/govcore_media_twitter",
+    "type": "drupal-module",
+    "description": "Twitter support for GovCore Media.",
+    "license": "GPL-2.0-or-later"
+}

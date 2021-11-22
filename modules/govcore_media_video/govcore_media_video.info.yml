@@ -1,0 +1,7 @@
+name: 'Media Video'
+core_version_requirement: '^8.8 || ^9'
+type: module
+package: GovCore
+description: 'Video support for GovCore Media.'
+dependencies:
+  - govcore_media:govcore_media

@@ -1,0 +1,6 @@
+{
+    "name": "govcore/govcore_media_image",
+    "type": "drupal-module",
+    "description": "Image support for GovCore Media.",
+    "license": "GPL-2.0-or-later"
+}

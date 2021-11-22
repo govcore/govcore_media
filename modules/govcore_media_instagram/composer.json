@@ -1,0 +1,6 @@
+{
+    "name": "govcore/govcore_media_instagram",
+    "type": "drupal-module",
+    "description": "Instagram support for GovCore Media.",
+    "license": "GPL-2.0-or-later"
+}

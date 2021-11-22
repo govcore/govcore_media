@@ -1,0 +1,6 @@
+{
+    "name": "govcore/govcore_media_audio",
+    "type": "drupal-module",
+    "description": "Audio support for GovCore Media.",
+    "license": "GPL-2.0-or-later"
+}

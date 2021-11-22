@@ -1,0 +1,11 @@
+services:
+  govcore.media_helper:
+    class: '\Drupal\govcore_media\MediaHelper'
+    arguments:
+      - '@entity_type.manager'
+
+  govcore_media.route_subscriber:
+    class: '\Drupal\govcore_media\Routing\RouteSubscriber'
+    tags:
+      -
+        name: event_subscriber

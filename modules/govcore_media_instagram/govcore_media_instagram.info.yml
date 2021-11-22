@@ -1,0 +1,8 @@
+name: 'Media Instagram'
+core_version_requirement: '^8.8 || ^9'
+type: module
+description: 'Instagram support for GovCore Media.'
+package: GovCore
+dependencies:
+  - govcore_media:govcore_media
+  - media_entity_instagram:media_entity_instagram
