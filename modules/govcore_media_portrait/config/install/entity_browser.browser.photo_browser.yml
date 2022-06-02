@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media_browser_media_library_portrait
+  module:
+    - entity_browser_entity_form
+    - views
+name: photo_browser
+label: 'Portrait Browser'
+display: modal
+display_configuration:
+  width: '1070'
+  height: '500'
+  link_text: 'Select Photos'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  98d58c3a-6daf-47f3-8b23-77d93d69d191:
+    settings:
+      view: media_browser_media_library_portrait
+      view_display: media_browser_all
+      submit_text: 'Select Portrait'
+      auto_select: false
+    uuid: 98d58c3a-6daf-47f3-8b23-77d93d69d191
+    weight: 1
+    label: 'Select Portrait'
+    id: view
+  1b823811-86d6-49fc-abea-1eece41b389c:
+    settings:
+      entity_type: media
+      bundle: portrait
+      form_mode: media_browser
+      submit_text: 'Upload Image'
+    uuid: 1b823811-86d6-49fc-abea-1eece41b389c
+    weight: 3
+    label: 'Upload Portrait'
+    id: entity_form

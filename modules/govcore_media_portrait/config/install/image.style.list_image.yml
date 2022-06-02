@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.crop_four_five
+    - image.style.crop_four_three
+  module:
+    - image_effects
+name: list_image
+label: 'Content List Image'
+effects:
+  e6c9482c-ec44-4f0e-91d5-0c095f714f5b:
+    uuid: e6c9482c-ec44-4f0e-91d5-0c095f714f5b
+    id: image_effects_aspect_switcher
+    weight: 1
+    data:
+      landscape_image_style: crop_four_three
+      portrait_image_style: crop_four_five
+      ratio_adjustment: !!float 1
+  f2dae9f2-8134-4fc3-b943-81f0af41622b:
+    uuid: f2dae9f2-8134-4fc3-b943-81f0af41622b
+    id: image_effects_scale_and_smart_crop
+    weight: 2
+    data:
+      width: '66'
+      height: '50'
+      upscale: true
+      simulate: false
+      algorithm: entropy_slice

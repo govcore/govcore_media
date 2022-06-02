@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: four_one
+label: '4:1'
+description: 'Crops enforcing a 4:1 aspect ratio.'
+aspect_ratio: '4:1'
+soft_limit_width: 1800
+soft_limit_height: 450
+hard_limit_width: 1800
+hard_limit_height: 450

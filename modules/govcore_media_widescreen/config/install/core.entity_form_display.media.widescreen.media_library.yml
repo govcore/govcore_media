@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.widescreen.field_media_image
+    - field.field.media.widescreen.field_media_in_library
+    - image.style.crop_sixteen_nine_thumb
+    - media.type.widescreen
+  module:
+    - image_widget_crop
+    - imce
+id: media.widescreen.media_library
+targetEntityType: media
+bundle: widescreen
+mode: media_library
+content:
+  field_media_image:
+    weight: 1
+    settings:
+      show_crop_area: true
+      show_default_crop: true
+      preview_image_style: crop_sixteen_nine_thumb
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - sixteen_nine
+      crop_types_required:
+        - sixteen_nine
+      progress_indicator: throbber
+      warn_multiple_usages: false
+    type: image_widget_crop
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_in_library: true
+  langcode: true
+  path: true
+  revision_log_message: true
+  status: true
+  uid: true

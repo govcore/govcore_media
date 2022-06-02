@@ -9,3 +9,9 @@ services:
     tags:
       -
         name: event_subscriber
+  logger.channel.govcore_media:
+    parent: logger.channel_base
+    arguments: [ 'media_name' ]
+  media_name:
+    class: Drupal\govcore_media\MediaName
+    arguments: [ '@entity_field.manager', '@config.factory', '@messenger', '@logger.factory' ]

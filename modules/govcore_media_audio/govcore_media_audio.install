@@ -10,29 +10,47 @@ use Drupal\govcore_core\ConfigHelper as Config;
 use Drupal\media\Entity\MediaType;
 
 /**
- * Creates the media_library form display for audio files.
+ * Implements hook_install().
  */
-function govcore_media_audio_update_8001() {
-  // In GovCore Media 4, the audio_file media type was renamed to audio. This
-  // update existed prior to GovCore Media 4, so we need to ensure that the
-  // media_library form display is created for the existing media type.
-  $form_display = EntityFormDisplay::load('media.audio_file.media_library');
+function govcore_media_audio_install() {
+  // Don't do anything during config sync.
+  if (\Drupal::isConfigSyncing()) {
+    return;
+  }
 
-  // Only create the form display if it hasn't been created already.
-  if (empty($form_display)) {
-    $media_type = MediaType::load('audio_file');
+  $module_exists = [\Drupal::moduleHandler(), 'moduleExists'];
 
-    // Adapt the form display we ship for the audio media type, so that it works
-    // with the audio_file media type.
-    $values = Config::forModule('govcore_media_audio')
-      ->optional()
-      ->read('core.entity_form_display.media.audio.media_library');
+  if ($module_exists('image_widget_crop')) {
+    // Use the cropping widgets for every form display of the Image media type.
+    $form_displays = \Drupal::entityTypeManager()
+      ->getStorage('entity_form_display')
+      ->loadByProperties([
+        'targetEntityType' => 'media',
+        'bundle' => 'image',
+      ]);
 
-    $values['bundle'] = $media_type->id();
-    unset($values['id'], $values['dependencies'], $values['hidden']['field_media_audio_file']);
+    /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $form_display */
+    foreach ($form_displays as $form_display) {
+      $component = $form_display->getComponent('field_media_audio_file_image');
 
-    EntityFormDisplay::create($values)
-      ->removeComponent($media_type->getSource()->getSourceFieldDefinition($media_type)->getName())
-      ->save();
+      if ($component && $component['type'] == 'image_image') {
+        $component['type'] = 'image_widget_crop';
+        $component['settings']['crop_list'] = ['four_five'];
+        $component['settings']['show_crop_area'] = TRUE;
+        $form_display->setComponent('field_media_audio_file_image', $component)->save();
+      }
+    }
+
+    // Try to use a local copy of Cropper over the CDN-hosted fallback.
+    $cropper_path = Drupal::service('library.libraries_directory_file_finder')
+      ->find('cropper/dist');
+
+    if ($cropper_path) {
+      Drupal::configFactory()
+        ->getEditable('image_widget_crop.settings')
+        ->set('settings.library_url', "$cropper_path/cropper.min.js")
+        ->set('settings.css_url', "$cropper_path/cropper.min.css")
+        ->save();
+    }
   }
 }

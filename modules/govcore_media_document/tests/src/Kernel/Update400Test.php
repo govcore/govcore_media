@@ -43,7 +43,7 @@ class Update400Test extends KernelTestBase {
     ]);
 
     $field_storage = FieldStorageConfig::create([
-      'field_name' => 'field_document',
+      'field_name' => 'field_media_document',
       'type' => 'string',
       'entity_type' => 'media',
     ]);
@@ -64,7 +64,7 @@ class Update400Test extends KernelTestBase {
 
     Update400::create($this->container)->requireDocumentMediaSourceField($io->reveal());
 
-    $field = FieldConfig::loadByName('media', 'document', 'field_document');
+    $field = FieldConfig::loadByName('media', 'document', 'field_media_document');
     $this->assertTrue($field->isRequired());
   }
 

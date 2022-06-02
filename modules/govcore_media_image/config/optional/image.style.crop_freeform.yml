@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.freeform
+  module:
+    - crop
+name: crop_freeform
+label: 'Cropped: Freeform'
+effects:
+  0be4121e-f1e0-4330-ba21-cec488239b80:
+    uuid: 0be4121e-f1e0-4330-ba21-cec488239b80
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: freeform
+  e492b88e-b8a7-4ebb-9881-86a5fa18e102:
+    uuid: e492b88e-b8a7-4ebb-9881-86a5fa18e102
+    id: image_scale
+    weight: 2
+    data:
+      width: 1200
+      height: 1200
+      upscale: false

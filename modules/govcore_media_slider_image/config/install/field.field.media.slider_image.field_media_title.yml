@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_title
+    - media.type.slider_image
+id: media.slider_image.field_media_title
+field_name: field_media_title
+entity_type: media
+bundle: slider_image
+label: 'Slide Title'
+description: 'The title text of the image.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

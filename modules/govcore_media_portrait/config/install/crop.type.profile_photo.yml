@@ -1,0 +1,12 @@
+uuid: be10fefc-3828-4cc2-bbb6-e2d9290e13cb
+langcode: en
+status: true
+dependencies: {  }
+id: profile_photo
+label: '4:5'
+description: 'Crops enforcing a 4:5 aspect ratio.'
+aspect_ratio: '4:5'
+soft_limit_width: null
+soft_limit_height: null
+hard_limit_width: null
+hard_limit_height: null

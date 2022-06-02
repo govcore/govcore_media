@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.sixteen_nine
+  module:
+    - crop
+    - image_effects
+name: video_thumbnail_teaser
+label: 'Video Thumbnail Teaser'
+effects:
+  b62e126c-c467-46dd-96a3-229a3d30a512:
+    uuid: b62e126c-c467-46dd-96a3-229a3d30a512
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: sixteen_nine
+  42bbeef5-bd1f-4476-a74b-0d8bc199e254:
+    uuid: 42bbeef5-bd1f-4476-a74b-0d8bc199e254
+    id: image_effects_scale_and_smart_crop
+    weight: 2
+    data:
+      width: '600'
+      height: '338'
+      upscale: true
+      simulate: false
+      algorithm: entropy_slice

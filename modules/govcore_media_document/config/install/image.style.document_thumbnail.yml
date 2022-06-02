@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies: {  }
+name: document_thumbnail
+label: 'Document Thumbnail'
+effects:
+  2340ef75-a4c0-4f21-8ad6-7ae2968c3bcd:
+    uuid: 2340ef75-a4c0-4f21-8ad6-7ae2968c3bcd
+    id: image_scale
+    weight: 1
+    data:
+      width: 160
+      height: null
+      upscale: true
+  217edda8-1cec-4e4a-92d0-90fa1c5b8bac:
+    uuid: 217edda8-1cec-4e4a-92d0-90fa1c5b8bac
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 154
+      height: 200
+      anchor: center-top

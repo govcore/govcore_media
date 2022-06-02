@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.four_one
+  module:
+    - crop
+    - image_effects
+name: crop_four_one_teaser
+label: 'Cropped: 4:1 Teaser'
+effects:
+  c7f426de-a19e-4f94-b39d-276f4e926218:
+    uuid: c7f426de-a19e-4f94-b39d-276f4e926218
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: four_one
+  3d13c4b7-e26c-434b-9a83-605bb57623c6:
+    uuid: 3d13c4b7-e26c-434b-9a83-605bb57623c6
+    id: image_effects_scale_and_smart_crop
+    weight: 2
+    data:
+      width: '900'
+      height: '225'
+      upscale: true
+      simulate: false
+      algorithm: entropy_slice

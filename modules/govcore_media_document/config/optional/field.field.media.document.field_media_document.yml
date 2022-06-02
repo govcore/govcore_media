@@ -1,3 +1,4 @@
+uuid: 03e040f4-6ed7-43ad-bea8-5a78553009fa
 langcode: en
 status: true
 dependencies:
@@ -6,6 +7,8 @@ dependencies:
     - media.type.document
   module:
     - file
+_core:
+  default_config_hash: F-HGmxO4x1Kp3FhoRRQNsS-MPNG5nFHoSLT5annxke4
 id: media.document.field_media_document
 field_name: field_media_document
 entity_type: media
@@ -17,8 +20,8 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_directory: '[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'txt pdf doc docx'
+  file_directory: 'document/file/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt pdf doc docx ppt pptx'
   max_filesize: ''
   description_field: false
   handler: 'default:file'

@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.sixteen_nine
+  module:
+    - crop
+    - image_effects
+name: crop_sixteen_nine
+label: 'Cropped: 16:9'
+effects:
+  e10eec96-6bf7-41bc-b393-5baab99cb11d:
+    uuid: e10eec96-6bf7-41bc-b393-5baab99cb11d
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: sixteen_nine
+  b60d9ff4-ab02-44a6-bbf5-41742d419631:
+    uuid: b60d9ff4-ab02-44a6-bbf5-41742d419631
+    id: image_effects_scale_and_smart_crop
+    weight: 4
+    data:
+      width: '1600'
+      height: '900'
+      upscale: false
+      simulate: false
+      algorithm: entropy_slice

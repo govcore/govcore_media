@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.four_three
+  module:
+    - crop
+    - image_effects
+name: crop_four_three
+label: 'Cropped: 4:3'
+effects:
+  a35a3104-28de-4cf3-abda-bba2f72bee93:
+    uuid: a35a3104-28de-4cf3-abda-bba2f72bee93
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: four_three
+  95071594-0836-453b-9237-3b1a9b23cda9:
+    uuid: 95071594-0836-453b-9237-3b1a9b23cda9
+    id: image_effects_scale_and_smart_crop
+    weight: 2
+    data:
+      width: '1200'
+      height: '900'
+      upscale: true
+      simulate: false
+      algorithm: entropy_slice

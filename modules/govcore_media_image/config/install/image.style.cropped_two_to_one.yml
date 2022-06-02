@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.two_to_one
+  module:
+    - crop
+    - image_effects
+name: cropped_two_to_one
+label: 'Cropped: 2:1'
+effects:
+  99a223ce-047e-449c-9929-0ae6c166c229:
+    uuid: 99a223ce-047e-449c-9929-0ae6c166c229
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: two_to_one
+  98964f70-079e-4413-b22f-2ee850af6941:
+    uuid: 98964f70-079e-4413-b22f-2ee850af6941
+    id: image_effects_scale_and_smart_crop
+    weight: -8
+    data:
+      width: '1400'
+      height: '700'
+      upscale: true
+      simulate: false
+      algorithm: entropy_slice

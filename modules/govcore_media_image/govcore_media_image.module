@@ -60,18 +60,6 @@ function govcore_media_image_modules_installed(array $modules) {
     return;
   }
 
-  if (in_array('govcore_roles', $modules)) {
-    $permissions = ['access image_browser entity browser pages'];
-
-    // Media creators and managers can always access the image browser.
-    user_role_grant_permissions('media_creator', $permissions);
-    user_role_grant_permissions('media_manager', $permissions);
-
-    // Any content creator can as well.
-    \Drupal::service('govcore.content_roles')
-      ->grantPermissions('creator', $permissions);
-  }
-
   if (in_array('image_widget_crop', $modules)) {
     Config::forModule('govcore_media_image')
       ->optional()
@@ -124,7 +112,7 @@ function govcore_media_image_entity_form_display_presave(EntityFormDisplayInterf
 
   foreach ($new_components as $key => $component) {
     $display->setComponent($key, [
-      'type' => 'entity_browser_file',
+      'type' => 'entity_browser',
       'weight' => $component['weight'],
       'settings' => [
         'entity_browser' => 'image_browser',

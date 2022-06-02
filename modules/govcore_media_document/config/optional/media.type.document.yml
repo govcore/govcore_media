@@ -1,8 +1,9 @@
+uuid: cc7444f5-ef5e-4c9f-ad12-6677a75d77de
 langcode: en
 status: true
-dependencies:
-  module:
-    - media
+dependencies: {  }
+_core:
+  default_config_hash: 7qUNNqTp2JfR-J1_2r1N5jw-S9qiBgDMgFHkV5YRch0
 id: document
 label: Document
 description: 'A locally hosted document, such as a PDF.'

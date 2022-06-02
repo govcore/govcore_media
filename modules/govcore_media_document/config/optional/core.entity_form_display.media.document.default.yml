@@ -1,34 +1,41 @@
+uuid: 801ede83-57aa-42dc-9a12-24c6b6de2379
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.document.field_document_thumbnail
     - field.field.media.document.field_media_document
     - field.field.media.document.field_media_in_library
     - media.type.document
   module:
     - file
+    - imce
+_core:
+  default_config_hash: LQXMjPgd6Ghzql5VCJgaw5viT86ymlNASX-Slx0Z_Ew
 id: media.document.default
 targetEntityType: media
 bundle: document
 mode: default
 content:
   field_media_document:
-    weight: 0
+    weight: 1
     settings:
       progress_indicator: throbber
-    third_party_settings: {  }
+    third_party_settings:
+      imce:
+        enabled: false
     type: file_generic
     region: content
   field_media_in_library:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 2
     third_party_settings: {  }
     region: content
   name:
     type: string_textfield
-    weight: 2
+    weight: 0
     settings:
       size: 60
       placeholder: ''
@@ -36,8 +43,9 @@ content:
     region: content
 hidden:
   created: true
-  uid: true
-  # Hide the URL alias field, because media items do not have a canonical URL by default
-  # as of Drupal 8.7.
+  field_document_thumbnail: true
+  langcode: true
   path: true
   revision_log_message: true
+  status: true
+  uid: true

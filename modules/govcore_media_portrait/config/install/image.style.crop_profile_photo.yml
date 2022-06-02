@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.profile_photo
+  module:
+    - crop
+name: crop_profile_photo
+label: 'Profile Photo'
+effects:
+  0c72c47a-ae4e-4d3c-b63f-dec5ba311956:
+    uuid: 0c72c47a-ae4e-4d3c-b63f-dec5ba311956
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: four_five
+  fe5666d9-3405-4499-b0af-7b7803677856:
+    uuid: fe5666d9-3405-4499-b0af-7b7803677856
+    id: image_scale_and_crop
+    weight: -8
+    data:
+      width: 800
+      height: 1000
+      anchor: center-top
+  9c485214-0bad-4fa9-a4e0-b125bb658ced:
+    uuid: 9c485214-0bad-4fa9-a4e0-b125bb658ced
+    id: image_scale
+    weight: -9
+    data:
+      width: 850
+      height: null
+      upscale: true
