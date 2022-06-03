@@ -535,7 +535,7 @@ function govcore_media_form_media_form_alter(array &$form, FormStateInterface $f
   // If the media name is accessible, it could be overridden.
   if (array_key_exists('name', $form) && $form['name']['#access']) {
     /** @var \Drupal\govcore_media\MediaNameInterface $mediaNameService */
-    $mediaNameService = \Drupal::service('media_name');
+    $mediaNameService = \Drupal::service('govcore_media.media_name');
     $mediaNameService->alterMediaEditForm($form_state);
 
     // Always set the custom submit handler if the original name has
@@ -555,7 +555,7 @@ function govcore_media_form_media_form_alter(array &$form, FormStateInterface $f
  */
 function _govcore_media_form_submit(array &$form, FormStateInterface $form_state) {
   /** @var \Drupal\govcore_media\MediaNameInterface $mediaNameService */
-  $mediaNameService = \Drupal::service('media_name');
+  $mediaNameService = \Drupal::service('govcore_media.media_name');
   $mediaNameService->mediaEditFormSubmitHandler($form_state);
 }
 
