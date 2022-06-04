@@ -2,22 +2,22 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_media_audio_file_image
-    - media.type.audio_file
+    - field.storage.media.field_media_document_thumbnail
+    - media.type.document
   module:
     - image
-id: media.audio_file.field_media_audio_file_image
-field_name: field_media_audio_file_file_image
+id: media.document.field_media_document_thumbnail
+field_name: field_media_document_thumbnail
 entity_type: media
-bundle: audio_file
-label: 'Audio file image'
+bundle: document
+label: 'Document Thumbnail'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_directory: 'audio/image/[date:custom:Y]-[date:custom:m]'
+  file_directory: 'document/image/[date:custom:Y]-[date:custom:m]'
   file_extensions: 'png gif jpg jpeg'
   max_filesize: ''
   max_resolution: ''

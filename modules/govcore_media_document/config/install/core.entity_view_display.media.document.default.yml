@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.document.field_media_document
+    - field.field.media.document.field_media_document_thumbnail
+    - field.field.media.document.field_media_in_library
+    - image.style.document_teaser
+    - media.type.document
+  module:
+    - image
+_core:
+  default_config_hash: YGWt8yFP6V5UsxLpSFHltx8Fkpf4bl2DJEKluu5dIes
+id: media.document.default
+targetEntityType: media
+bundle: document
+mode: default
+content:
+  thumbnail:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_style: document_teaser
+      image_link: file
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_media_document: true
+  field_media_document_thumbnail: true
+  field_media_in_library: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  uid: true

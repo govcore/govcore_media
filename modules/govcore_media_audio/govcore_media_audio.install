@@ -35,7 +35,7 @@ function govcore_media_audio_install() {
 
       if ($component && $component['type'] == 'image_image') {
         $component['type'] = 'image_widget_crop';
-        $component['settings']['crop_list'] = ['four_five'];
+        $component['settings']['crop_list'] = ['one_one'];
         $component['settings']['show_crop_area'] = TRUE;
         $form_display->setComponent('field_media_audio_file_image', $component)->save();
       }

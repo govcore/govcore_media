@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media_browser_media_library_audio
+  module:
+    - entity_browser_entity_form
+    - views
+name: audio_browser
+label: 'Audio Browser'
+display: modal
+display_configuration:
+  width: '1070'
+  height: '500'
+  link_text: 'Select File(s)'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  7a520849-ac03-43e7-a2c5-224a5df795b6:
+    settings:
+      view: media_browser_media_library_audio
+      view_display: media_browser_all
+      submit_text: 'Select Audio Files'
+      auto_select: false
+    uuid: 7a520849-ac03-43e7-a2c5-224a5df795b6
+    weight: 1
+    label: 'Select Audio Files'
+    id: view
+  308fd8cd-7479-4e06-9a1a-301b50a43641:
+    settings:
+      entity_type: media
+      bundle: audio
+      form_mode: media_browser
+      submit_text: 'Upload Audio File'
+    uuid: 308fd8cd-7479-4e06-9a1a-301b50a43641
+    weight: 2
+    label: 'Upload Audio File'
+    id: entity_form

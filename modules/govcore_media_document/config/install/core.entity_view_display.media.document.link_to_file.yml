@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.link_to_file
+    - field.field.media.document.field_media_document
+    - field.field.media.document.field_media_document_thumbnail
+    - field.field.media.document.field_media_in_library
+    - media.type.document
+  module:
+    - file_download_link
+_core:
+  default_config_hash: 4tgcXj_iKv9Fw3xmONUfCHKqO7OeOa11qVesruN4k4k
+id: media.document.link_to_file
+targetEntityType: media
+bundle: document
+mode: link_to_file
+content:
+  field_document:
+    weight: 0
+    label: hidden
+    settings:
+      link_text: '[media:name]'
+      new_tab: true
+      force_download: true
+      link_title: ''
+      custom_classes: ''
+    third_party_settings: {  }
+    type: file_download_link
+    region: content
+hidden:
+  addtoany: true
+  created: true
+  field_document_thumbnail: true
+  field_media_document: true
+  field_media_document_thumbnail: true
+  field_media_in_library: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

@@ -1,9 +1,9 @@
 status: 1
-pattern: '[media:field_media_video_file:entity:name]'
+pattern: '[media:field_media_oembed_video:entity:name]'
 escape: false
 preserve_titles: false
 save: 0
 chunk: '50'
 dependencies:
   config:
-    - media.type.video
+    - media.type.remote_video

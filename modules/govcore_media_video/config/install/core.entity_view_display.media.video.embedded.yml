@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.media.embedded
     - field.field.media.video.field_media_video_file
+    - field.field.media.video.field_media_video_file_image
     - media.type.video
   module:
     - file

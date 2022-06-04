@@ -5,8 +5,8 @@ dependencies:
     - file
     - image
     - media
-id: media.field_media_audio_file_image
-field_name: field_media_audio_file_image
+id: media.field_media_document_thumbnail
+field_name: field_media_document_thumbnail
 entity_type: media
 type: image
 settings:

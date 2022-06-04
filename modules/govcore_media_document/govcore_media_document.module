@@ -45,13 +45,6 @@ function govcore_media_document_entity_form_display_presave(EntityFormDisplayInt
     return;
   }
 
-  // Since the image browser integrates with the media library, it doesn't make
-  // sense to use the image browser when creating or editing an image media
-  // entity.
-  if ($display->getTargetEntityTypeId() == 'media' && $display->getTargetBundle() == 'file') {
-    return;
-  }
-
   $filter = function (FieldStorageDefinitionInterface $field) {
     return $field->getType() == 'file';
   };

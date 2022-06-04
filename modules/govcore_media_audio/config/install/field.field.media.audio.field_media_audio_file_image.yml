@@ -7,7 +7,7 @@ dependencies:
   module:
     - image
 id: media.audio_file.field_media_audio_file_image
-field_name: field_media_audio_file_file_image
+field_name: field_audio_file_image
 entity_type: media
 bundle: audio_file
 label: 'Audio file image'
@@ -17,8 +17,8 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_directory: 'video/image/[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'png gif jpg jpeg'
+  file_directory: 'images/audio/image/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png jpg jpeg'
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''

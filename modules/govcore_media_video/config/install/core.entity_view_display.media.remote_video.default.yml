@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.field_media_in_library
     - media.type.remote_video
   module:
     - media

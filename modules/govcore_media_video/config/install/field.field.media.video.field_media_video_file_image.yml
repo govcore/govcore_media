@@ -2,26 +2,26 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_document_thumbnail
-    - media.type.document
+    - field.storage.media.field_media_video_file_image
+    - media.type.video
   module:
     - image
-id: media.document.field_document_thumbnail
-field_name: field_document_thumbnail
+id: media.video.field_media_video_file_image
+field_name: field_media_video_file_image
 entity_type: media
-bundle: document
-label: 'Document Thumbnail'
+bundle: video
+label: 'Video Thumbnail'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_directory: 'document/image/[date:custom:Y]-[date:custom:m]'
+  file_directory: 'video/image/[date:custom:Y]-[date:custom:m]'
   file_extensions: 'png gif jpg jpeg'
   max_filesize: ''
   max_resolution: ''
-  min_resolution: ''
+  min_resolution: '800x450'
   alt_field: true
   alt_field_required: false
   title_field: false

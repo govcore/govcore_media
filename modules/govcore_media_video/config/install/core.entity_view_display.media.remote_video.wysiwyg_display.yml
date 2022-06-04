@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.wysiwyg_display
+    - field.field.media.remote_video.field_media_oembed_video
+    - media.type.remote_video
+  module:
+    - file_download_link
+id: media.remote_video.wysiwyg_display
+targetEntityType: media
+bundle: remote_video
+mode: wysiwyg_display
+content:
+  field_media_oembed_video:
+    type: file_download_link
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link_text: '[media:field_media_oembed_video:entity:name]'
+      new_tab: true
+      link_title: ''
+      custom_classes: ''
+      force_download: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

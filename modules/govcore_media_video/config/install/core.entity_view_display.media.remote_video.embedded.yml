@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.media.embedded
     - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.field_media_in_library
     - media.type.video
   module:
     - media
