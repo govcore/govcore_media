@@ -1,18 +1,18 @@
-langcode: en
+langcode: und
 status: true
 dependencies:
   module:
     - file
     - image
     - media
-id: media.field_media_audio_file_image
-field_name: field_media_audio_file_image
+id: media.video.field_media_video_file_image
+field_name: field_media_video_file_image
 entity_type: media
 type: image
 settings:
   uri_scheme: public
   default_image:
-    uuid: ''
+    uuid: null
     alt: ''
     title: ''
     width: null

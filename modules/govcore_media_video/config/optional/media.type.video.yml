@@ -5,7 +5,7 @@ dependencies:
     - file
 id: video
 label: 'Video file'
-description: 'A locally hosted video file'
+description: 'A locally hosted video file, such as an MP4'
 source: video_file
 queue_thumbnail_downloads: false
 new_revision: false

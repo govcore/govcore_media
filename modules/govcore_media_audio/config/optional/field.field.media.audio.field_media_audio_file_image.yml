@@ -10,7 +10,7 @@ id: media.audio.field_media_audio_file_image
 field_name: field_media_audio_file_image
 entity_type: media
 bundle: audio
-label: 'Audio file image'
+label: 'Audio File image'
 description: ''
 required: false
 translatable: false

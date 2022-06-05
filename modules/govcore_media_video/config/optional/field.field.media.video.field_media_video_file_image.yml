@@ -2,15 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_media_audio_file_image
-    - media.type.audio_file
+    - field.storage.media.field_media_video_file_image
+    - media.type.video
   module:
     - image
-id: media.audio_file.field_media_audio_file_image
-field_name: field_media_audio_file_file_image
+id: media.video.field_media_video_file_image
+field_name: field_media_video_file_image
 entity_type: media
-bundle: audio_file
-label: 'Audio file image'
+bundle: video
+label: 'Video file image'
 description: ''
 required: false
 translatable: false

@@ -1,12 +1,10 @@
 langcode: en
 status: true
-dependencies:
-  module:
-    - media
+dependencies: {  }
 id: audio
 label: 'Audio file'
 description: 'A locally hosted audio file, such as an MP3.'
-source: file
+source: audio_file
 queue_thumbnail_downloads: false
 new_revision: false
 source_configuration:
