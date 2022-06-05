@@ -9,6 +9,9 @@ use Drupal\govcore_core\OverrideHelper as Override;
 use Drupal\govcore_media_audio\Plugin\media\Source\AudioFile;
 use Drupal\govcore_media_image\Plugin\media\Source\Image;
 use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\govcore_core\ConfigHelper;
 
 /**
  * Implements hook_field_widget_info_alter().
@@ -32,7 +35,7 @@ function govcore_media_audio_modules_installed(array $modules) {
   }
 
   if (in_array('image_widget_crop', $modules)) {
-    Config::forModule('govcore_media_audio')
+    ConfigHelper::forModule('govcore_media_audio')
       ->optional()
       ->getEntity('crop_type', 'one_one')
       ->save();
