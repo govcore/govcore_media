@@ -1,14 +1,14 @@
-uuid: d6df7515-c916-4d21-8b27-dc79e63a8f19
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_library
     - field.field.media.document.field_media_document
+    - field.field.media.document.field_media_document_thumbnail
     - field.field.media.document.field_media_in_library
     - media.type.document
-_core:
-  default_config_hash: EoObM4d47BLKv-bSMpqVIEFzkPPcWW7UxnTs2q_JL0s
+  module:
+    - file
 id: media.document.media_library
 targetEntityType: media
 bundle: document
@@ -21,6 +21,13 @@ content:
     weight: 1
     third_party_settings: {  }
     region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -40,6 +47,7 @@ content:
 hidden:
   created: true
   field_media_document: true
+  field_media_document_thumbnail: true
   path: true
   status: true
   uid: true

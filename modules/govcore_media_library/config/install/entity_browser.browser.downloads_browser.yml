@@ -1,0 +1,52 @@
+uuid: 5d3e95e5-244d-4c46-b9ec-3aa549f5235d
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media_browser_media_library_downloads
+  module:
+    - entity_browser_entity_form
+    - views
+name: downloads_browser
+label: 'Downloads Browser'
+display: modal
+display_configuration:
+  width: '1070'
+  height: '500'
+  link_text: 'Select Downloads'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  df28a982-e89e-4cc6-ba5e-7cabd7b29343:
+    settings:
+      view: media_browser_media_library_downloads
+      view_display: media_browser_all
+      submit_text: 'Select Files'
+      auto_select: false
+    uuid: df28a982-e89e-4cc6-ba5e-7cabd7b29343
+    weight: 1
+    label: 'Select Files'
+    id: view
+  8f9869fa-1acb-4416-a8b5-5ba1062beedd:
+    settings:
+      entity_type: media
+      bundle: document
+      form_mode: media_browser
+      submit_text: 'Upload Document'
+    uuid: 8f9869fa-1acb-4416-a8b5-5ba1062beedd
+    weight: 2
+    label: 'Upload Document'
+    id: entity_form
+  10184c6e-cbe4-4dc6-9257-4eab042df4c0:
+    settings:
+      entity_type: media
+      bundle: image
+      form_mode: media_browser
+      submit_text: 'Upload Image'
+    uuid: 10184c6e-cbe4-4dc6-9257-4eab042df4c0
+    weight: 3
+    label: 'Upload Image'
+    id: entity_form

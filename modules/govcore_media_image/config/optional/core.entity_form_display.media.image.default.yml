@@ -1,46 +1,78 @@
+uuid: 2a016df1-744d-4c84-bb84-7c82032c56b3
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.image.field_media_in_library
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_media_in_library
     - image.style.thumbnail
     - media.type.image
   module:
-    - image
-third_party_settings: {  }
+    - govcore_media
+    - image_widget_crop
+    - imce
 id: media.image.default
 targetEntityType: media
 bundle: image
 mode: default
 content:
+  field_media_image:
+    type: image_widget_crop
+    weight: 1
+    settings:
+      show_crop_area: true
+      show_default_crop: true
+      preview_image_style: thumbnail
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - four_one
+        - four_three
+        - freeform
+        - one_to_one
+        - profile_photo
+        - sixteen_nine
+        - two_to_one
+      progress_indicator: throbber
+      crop_types_required: {  }
+      warn_multiple_usages: false
+    third_party_settings:
+      govcore_media:
+        file_links: true
+        remove_button: true
+      imce:
+        enabled: false
+    region: content
   field_media_in_library:
     type: boolean_checkbox
-    weight: 4
+    weight: 2
     settings:
       display_label: true
     third_party_settings: {  }
     region: content
-  field_media_image:
-    type: image_image
-    weight: 0
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 3
     region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
   name:
     type: string_textfield
-    weight: 3
+    weight: 0
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
 hidden:
   created: true
-  uid: true
-  # Hide the URL alias field, because media items do not have a canonical URL by default
-  # as of Drupal 8.7.
   path: true
   revision_log_message: true
+  uid: true

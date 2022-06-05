@@ -1,16 +1,14 @@
-uuid: 7c8e1f3e-c6aa-42a9-bf9f-629943b8ef8c
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.media.embedded
-    - field.field.media.document.field_document_thumbnail
     - field.field.media.document.field_media_document
+    - field.field.media.document.field_media_document_thumbnail
     - field.field.media.document.field_media_in_library
-    - image.style.crop_document_teaser
     - media.type.document
   module:
-    - image
+    - file_download_link
 _core:
   default_config_hash: UYzsDXsg0QjMLjsn09bDUJe4J6rvZOv2FlLT0t5oZHM
 id: media.document.embedded
@@ -19,18 +17,21 @@ bundle: document
 mode: embedded
 content:
   thumbnail:
-    type: image
+    type: file_download_link
     weight: 0
     region: content
     label: hidden
     settings:
-      image_style: crop_document_teaser
-      image_link: file
+      link_text: '[media:field_document:entity:name]'
+      new_tab: true
+      force_download: true
+      link_title: ''
+      custom_classes: ''
     third_party_settings: {  }
 hidden:
   created: true
-  field_document_thumbnail: true
   field_media_document: true
+  field_media_document_thumbnail: true
   field_media_in_library: true
   langcode: true
   name: true

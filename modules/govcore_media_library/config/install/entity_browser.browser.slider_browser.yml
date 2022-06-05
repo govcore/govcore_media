@@ -1,0 +1,44 @@
+uuid: 7f740bd4-0220-4aa1-ae06-5932eb0dc819
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media_browser_media_library_slider
+  module:
+    - entity_browser_entity_form
+    - views
+_core:
+  default_config_hash: lLDPHifhHGEGQSwIFRc1QJZM5gRbxBwXpa2V2G4uh_4
+name: slider_browser
+label: 'Slider Browser'
+display: modal
+display_configuration:
+  width: '1070'
+  height: '500'
+  link_text: 'Select entities'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  d8f45cc5-ce46-4962-a9b3-1e084c6f2e55:
+    settings:
+      view: media_browser_media_library_slider
+      view_display: media_browser_all
+      submit_text: 'Select Slide'
+      auto_select: false
+    uuid: d8f45cc5-ce46-4962-a9b3-1e084c6f2e55
+    weight: 1
+    label: 'Select Slide'
+    id: view
+  a77755f8-3baf-4d66-be2c-74277cd14574:
+    settings:
+      entity_type: media
+      bundle: slider_image
+      form_mode: media_browser
+      submit_text: 'Upload Slide Image'
+    uuid: a77755f8-3baf-4d66-be2c-74277cd14574
+    weight: 2
+    label: 'Upload Slide Image '
+    id: entity_form

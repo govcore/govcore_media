@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.thumbnail
+    - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_media_audio_file_image
+    - field.field.media.audio.field_media_in_library
+    - image.style.crop_one_one_thumb
+    - media.type.audio
+  module:
+    - image
+id: media.audio.thumbnail
+targetEntityType: media
+bundle: audio
+mode: thumbnail
+content:
+  field_media_audio_file_image:
+    type: image
+    weight: 0
+    region: content
+    label: visually_hidden
+    settings:
+      image_style: crop_one_one_thumb
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_audio_file: true
+  field_media_in_library: true
+  thumbnail: true
+  name: true
+  uid: true

@@ -26,7 +26,7 @@ function govcore_media_audio_install() {
       ->getStorage('entity_form_display')
       ->loadByProperties([
         'targetEntityType' => 'media',
-        'bundle' => 'image',
+        'bundle' => 'audio',
       ]);
 
     /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $form_display */

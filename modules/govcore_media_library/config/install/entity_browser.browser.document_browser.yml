@@ -1,0 +1,42 @@
+uuid: e32acece-625a-4dea-ae0a-f33781cf8e30
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media_browser_media_library_document
+  module:
+    - entity_browser_entity_form
+    - views
+name: document_browser
+label: 'Document Browser'
+display: iframe
+display_configuration:
+  width: '1070'
+  height: '500'
+  link_text: 'Select Documents'
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  7a520849-ac03-43e7-a2c5-224a5df795b4:
+    settings:
+      view: media_browser_media_library_document
+      view_display: media_browser_all
+      submit_text: 'Select Documents'
+      auto_select: false
+    uuid: 7a520849-ac03-43e7-a2c5-224a5df795b4
+    weight: 1
+    label: 'Select Documents'
+    id: view
+  308fd8cd-7479-4e06-9a1a-301b50a43640:
+    settings:
+      entity_type: media
+      bundle: document
+      form_mode: media_browser
+      submit_text: 'Upload Document'
+    uuid: 308fd8cd-7479-4e06-9a1a-301b50a43640
+    weight: 2
+    label: 'Upload Document'
+    id: entity_form

@@ -18,8 +18,6 @@ components:
   - govcore_media_document
   - govcore_media_image
   - govcore_media_instagram
-  - govcore_media_library
-  - govcore_media_portrait
-  - govcore_media_slider_image
+  - govcore_media_slideshow
   - govcore_media_twitter
   - govcore_media_video

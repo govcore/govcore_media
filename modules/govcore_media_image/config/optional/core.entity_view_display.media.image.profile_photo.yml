@@ -1,0 +1,23 @@
+uuid: 66d09f55-03dd-42a6-8723-f7c7c50761ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.profile_photo
+    - field.field.media.image.field_media_image
+    - field.field.media.image.field_media_in_library
+    - media.type.image
+id: media.image.profile_photo
+targetEntityType: media
+bundle: image
+mode: profile_photo
+content: {  }
+hidden:
+  created: true
+  field_media_image: true
+  field_media_in_library: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

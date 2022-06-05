@@ -1,29 +1,36 @@
+uuid: 6aa29863-d853-4e0d-88ef-e6a8bd6a05df
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.media.embedded
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_media_in_library
     - media.type.image
   module:
-    - image
+    - file_download_link
 id: media.image.embedded
 targetEntityType: media
 bundle: image
 mode: embedded
 content:
   field_media_image:
-    type: image
+    type: file_download_link
     weight: 0
     label: hidden
     settings:
-      image_style: ''
-      image_link: ''
+      link_text: '[media:field_image:entity:name]'
+      new_tab: true
+      force_download: true
+      link_title: '[media:field_image:entity:name]'
+      custom_classes: ''
     third_party_settings: {  }
     region: content
 hidden:
   created: true
   field_media_in_library: true
+  langcode: true
   name: true
+  search_api_excerpt: true
   thumbnail: true
   uid: true

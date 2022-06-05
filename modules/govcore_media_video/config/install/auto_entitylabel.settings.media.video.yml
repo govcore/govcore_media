@@ -6,4 +6,4 @@ save: 0
 chunk: '50'
 dependencies:
   config:
-    - media.type.video
+    - media.type.video_file

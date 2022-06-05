@@ -8,6 +8,7 @@
 use Drupal\govcore_core\OverrideHelper as Override;
 use Drupal\govcore_media_audio\Plugin\media\Source\AudioFile;
 use Drupal\govcore_media_image\Plugin\media\Source\Image;
+use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
 
 /**
  * Implements hook_field_widget_info_alter().
