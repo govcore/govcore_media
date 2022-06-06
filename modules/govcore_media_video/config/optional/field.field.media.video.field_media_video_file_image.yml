@@ -10,15 +10,15 @@ id: media.video.field_media_video_file_image
 field_name: field_media_video_file_image
 entity_type: media
 bundle: video
-label: 'Video file image'
+label: 'Video file Image'
 description: ''
-required: false
-translatable: false
+required: true
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
   file_directory: 'video/image/[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'png gif jpg jpeg'
+  file_extensions: 'png jpg jpeg'
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''

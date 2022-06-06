@@ -10,6 +10,8 @@ use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\govcore_core\ConfigHelper as Config;
 use Drupal\media\Entity\MediaType;
 
+
+
 /**
  * Implements hook_install().
  */
@@ -22,7 +24,7 @@ function govcore_media_video_install() {
   $module_exists = [\Drupal::moduleHandler(), 'moduleExists'];
 
   if ($module_exists('image_widget_crop')) {
-    // Use the cropping widgets for every form display of the Image media type.
+    // Use the cropping widgets for every form display of the video media type.
     $form_displays = \Drupal::entityTypeManager()
       ->getStorage('entity_form_display')
       ->loadByProperties([
@@ -32,7 +34,7 @@ function govcore_media_video_install() {
 
     /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $form_display */
     foreach ($form_displays as $form_display) {
-      $component = $form_display->getComponent('field_media_video_file_image');
+      $component = $form_display->getComponent('field_media_video_file');
 
       if ($component && $component['type'] == 'image_image') {
         $component['type'] = 'image_widget_crop';

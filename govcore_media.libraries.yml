@@ -8,3 +8,12 @@ browser.styling:
   dependencies:
     - core/backbone
     - core/jquery
+media.browser:
+  css:
+    component:
+      css/media_entity_browser_media_library.view.css:
+        minified: true
+  js:
+      css/media_entity_browser_media_library.view.js:
+        minified: true
+

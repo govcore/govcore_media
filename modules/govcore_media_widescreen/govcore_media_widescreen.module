@@ -11,7 +11,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\govcore_core\ConfigHelper as Config;
 use Drupal\govcore_core\OverrideHelper as Override;
-
+use Drupal\Core\Field\FieldDefinitionInterface;
 
 /**
  * Implements hook_field_widget_info_alter().
@@ -76,7 +76,7 @@ function govcore_media_widescreen_entity_form_display_presave(EntityFormDisplayI
     return;
   }
 
-  $filter = function (FieldStorageDefinitionInterface $field) {
+  $filter = function (FieldDefinitionInterface $field) {
     return $field->getType() == 'image';
   };
   $new_components = \Drupal::service('govcore.display_helper')

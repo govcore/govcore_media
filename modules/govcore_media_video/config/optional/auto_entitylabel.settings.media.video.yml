@@ -1,5 +1,5 @@
 status: 1
-pattern: '[media:field_media_video_file:entity:name]'
+pattern: ''
 escape: false
 preserve_titles: false
 save: 0

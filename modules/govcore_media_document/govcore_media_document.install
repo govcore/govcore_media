@@ -1,0 +1,84 @@
+<?php
+
+use Drupal\govcore_core\ConfigHelper as Config;
+
+/**
+ * Implements hook_install().
+ */
+function govcore_media_document_install() {
+  // Don't do anything during config sync.
+  if (\Drupal::isConfigSyncing()) {
+    return;
+  }
+
+  $module_exists = [\Drupal::moduleHandler(), 'moduleExists'];
+
+  if ($module_exists('image_widget_crop')) {
+    // Use the cropping widgets for every form display of the Image media type.
+    $form_displays = \Drupal::entityTypeManager()
+      ->getStorage('entity_form_display')
+      ->loadByProperties([
+        'targetEntityType' => 'media',
+        'bundle' => 'document',
+      ]);
+
+    /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $form_display */
+    foreach ($form_displays as $form_display) {
+      $component = $form_display->getComponent('field_media_document_thumbnail');
+
+      if ($component && $component['type'] == 'image_image') {
+        $component['type'] = 'image_widget_crop';
+        $component['settings']['crop_list'] = ['profile_photo'];
+        $component['settings']['show_crop_area'] = TRUE;
+        $form_display->setComponent('field_media_document_thumbnail', $component)->save();
+      }
+    }
+
+    // Try to use a local copy of Cropper over the CDN-hosted fallback.
+    $cropper_path = Drupal::service('library.libraries_directory_file_finder')
+      ->find('cropper/dist');
+
+    if ($cropper_path) {
+      Drupal::configFactory()
+        ->getEditable('image_widget_crop.settings')
+        ->set('settings.library_url', "$cropper_path/cropper.min.js")
+        ->set('settings.css_url', "$cropper_path/cropper.min.css")
+        ->save();
+    }
+  }
+}
+
+/**
+ * Creates the thumbnail display for documents.
+ */
+function govcore_media_document_update_8001() {
+  Config::forModule('govcore_media_document')
+    ->optional()
+    ->getEntity('entity_view_display', 'media.document.thumbnail')
+    ->save();
+}
+
+/**
+ * Creates the media_library form display for documents.
+ */
+function govcore_media_document_update_8002() {
+  Config::forModule('govcore_media_document')
+    ->optional()
+    ->getEntity('entity_form_display', 'media.document.media_library')
+    ->save();
+}
+
+/**
+ * Implements hook_update_dependencies().
+ */
+function govcore_media_document_update_dependencies() {
+  return [
+    'govcore_media_document' => [
+      // 8001 depends on the thumbnail view mode, which is created by
+      // govcore_media 8015.
+      8001 => [
+        'govcore_media' => 8015,
+      ],
+    ],
+  ];
+}

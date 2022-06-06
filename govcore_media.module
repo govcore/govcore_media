@@ -27,6 +27,7 @@ use Drupal\media\MediaTypeInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\govcore_media\MediaNameInterface;
 use Drupal\govcore_media\MediaName;
+use Drupal\Core\Config\Config;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
@@ -105,10 +106,11 @@ function govcore_media_modules_installed(array $modules) {
   if (Drupal::isConfigSyncing()) {
     return;
   }
-
-  if (in_array('govcore_roles', $modules, TRUE)) {
-    Drupal::service('govcore.content_roles')
-      ->grantPermissions('creator', ['use text format rich_text']);
+  if (in_array('image_widget_crop', $modules)) {
+    Config::forModule('govcore_media_image')
+      ->optional()
+      ->getEntity('crop_type', 'freeform')
+      ->save();
   }
 }
 

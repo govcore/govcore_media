@@ -116,13 +116,13 @@ class MediaHelper {
     // one that adds an optional second parameter to loadMultiple().
     $media_types = $this->entityTypeManager
       ->getStorage('media_type')
-      ->loadMultiple($bundles ?: NULL, $check_access);
+      ->loadMultiple($bundles ?: NULL);
     ksort($media_types);
 
     return array_filter($media_types, function (MediaTypeInterface $media_type) use ($value) {
       $source = $media_type->getSource();
 
-      return $source instanceof InputMatchInterface && $source->appliesTo($value, $media_type);
+      return $source instanceof  MediaTypeInterface && $source->appliesTo($value, $media_type);
     });
   }
 

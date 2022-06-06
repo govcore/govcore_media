@@ -79,21 +79,6 @@ final class Update350 implements ContainerInjectionInterface {
     }
   }
 
-  /**
-   * Makes field_media_in_library non-translatable in the video_file media type.
-   *
-   * @param \Symfony\Component\Console\Style\StyleInterface $io
-   *   The I/O handler.
-   *
-   * @update
-   */
-  public function removeVideoFileLibraryFieldTranslatability(StyleInterface $io) {
-    /** @var \Drupal\field\Entity\FieldConfig $field */
-    $field = $this->fieldStorage->load('media.video_file.field_media_in_library');
-    if ($field) {
-      $this->processField($io, $field);
-    }
-  }
 
   /**
    * Removes translatability from a field after confirming the action.
