@@ -1,6 +1,0 @@
-{
-    "name": "govcore/govcore_media_widescreen",
-    "type": "drupal-module",
-    "description": "Widescreen Image support for GovCore Media.",
-    "license": "GPL-2.0-or-later"
-}

@@ -6,3 +6,8 @@ package: GovCore
 dependencies:
   - govcore_media:govcore_media
   - media_entity_instagram:media_entity_instagram
+
+# Information added by Drupal.org packaging script on 2021-02-08
+version: '8.x-4.6'
+project: 'govcore_media'
+datestamp: 1612802526

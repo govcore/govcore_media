@@ -10,49 +10,83 @@ use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\govcore_core\ConfigHelper as Config;
 use Drupal\media\Entity\MediaType;
 
-
+/**
+ * Removed in GovCore Media 4.0.
+ *
+ * Formerly installed video_embed_media and updated display settings for videos.
+ */
+function govcore_media_video_update_8001() {
+}
 
 /**
- * Implements hook_install().
+ * Removed in GovCore Media 4.0.
+ *
+ * Formerly created the media_browser form display.
  */
-function govcore_media_video_install() {
-  // Don't do anything during config sync.
-  if (\Drupal::isConfigSyncing()) {
-    return;
+function govcore_media_video_update_8002() {
+}
+
+/**
+ * Creates the thumbnail display for remote videos.
+ */
+function govcore_media_video_update_8003() {
+  // In GovCore Media 4, the video media type was renamed to remote_video.
+  // This update existed prior to GovCore Media 4, so we need to ensure that
+  // the thumbnail view display is created for the existing media type.
+  $view_display = EntityViewDisplay::load('media.video.thumbnail');
+
+  // Only create the view display if it hasn't been created already.
+  if (empty($view_display)) {
+    $media_type = MediaType::load('video');
+
+    // Adapt the view display we ship for the remote_video media type, so that
+    // it works with the video media type.
+    $values = Config::forModule('govcore_media_video')
+      ->optional()
+      ->read('core.entity_view_display.media.remote_video.thumbnail');
+
+    $values['bundle'] = $media_type->id();
+    unset($values['id'], $values['dependencies'], $values['hidden']['field_media_oembed_video']);
+
+    EntityViewDisplay::create($values)
+      ->removeComponent($media_type->getSource()->getSourceFieldDefinition($media_type)->getName())
+      ->save();
   }
+}
 
-  $module_exists = [\Drupal::moduleHandler(), 'moduleExists'];
+/**
+ * Creates the media_library form display for videos.
+ */
+function govcore_media_video_update_8004() {
+  $config = Config::forModule('govcore_media_video')->optional();
 
-  if ($module_exists('image_widget_crop')) {
-    // Use the cropping widgets for every form display of the video media type.
-    $form_displays = \Drupal::entityTypeManager()
-      ->getStorage('entity_form_display')
-      ->loadByProperties([
-        'targetEntityType' => 'media',
-        'bundle' => 'video',
-      ]);
+  $type_map = [
+    'video' => ['remote_video', 'field_media_oembed_video'],
+    'video_file' => ['video', 'field_media_video_file'],
+  ];
 
-    /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $form_display */
-    foreach ($form_displays as $form_display) {
-      $component = $form_display->getComponent('field_media_video_file');
+  $media_types = array_keys($type_map);
+  $media_types = MediaType::loadMultiple($media_types);
 
-      if ($component && $component['type'] == 'image_image') {
-        $component['type'] = 'image_widget_crop';
-        $component['settings']['crop_list'] = ['sixteen_nine'];
-        $component['settings']['show_crop_area'] = TRUE;
-        $form_display->setComponent('field_media_video_file_image', $component)->save();
-      }
-    }
+  // In GovCore Media 4, the video media type was renamed to remote_video and
+  // the video_file media type was renamed to video. This update existed prior
+  // to GovCore Media 4, so we need to ensure that the media_library form
+  // display is created for the existing media types.
+  foreach ($media_types as $original_type => $media_type) {
+    $form_display = EntityFormDisplay::load("media.$original_type.media_library");
 
-    // Try to use a local copy of Cropper over the CDN-hosted fallback.
-    $cropper_path = Drupal::service('library.libraries_directory_file_finder')
-      ->find('cropper/dist');
+    // Only create the form display if it hasn't been created already.
+    if (empty($form_display)) {
+      list ($new_type, $new_source_field) = $type_map[$original_type];
 
-    if ($cropper_path) {
-      Drupal::configFactory()
-        ->getEditable('image_widget_crop.settings')
-        ->set('settings.library_url', "$cropper_path/cropper.min.js")
-        ->set('settings.css_url', "$cropper_path/cropper.min.css")
+      // Adapt the form display we ship for the destination media type, so that
+      // it works with the source media type.
+      $values = $config->read("core.entity_form_display.media.$new_type.media_library");
+      $values['bundle'] = $original_type;
+      unset($values['id'], $values['dependencies'], $values['hidden'][$new_source_field]);
+
+      EntityFormDisplay::create($values)
+        ->removeComponent($media_type->getSource()->getSourceFieldDefinition($media_type)->getName())
         ->save();
     }
   }

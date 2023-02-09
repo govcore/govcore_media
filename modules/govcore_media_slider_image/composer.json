@@ -1,6 +1,0 @@
-{
-    "name": "govcore/govcore_media_slider_image",
-    "type": "drupal-module",
-    "description": "Slider Image support for GovCore Media.",
-    "license": "GPL-2.0-or-later"
-}

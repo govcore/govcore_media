@@ -72,14 +72,14 @@ final class Update350 implements ContainerInjectionInterface {
    */
   public function removeAudioFileLibraryFieldTranslatability(StyleInterface $io) {
     /** @var \Drupal\field\Entity\FieldConfig $field */
-    $field = $this->fieldStorage->load('media.audio.field_media_in_library');
+    $field = $this->fieldStorage->load('media.audio_file.field_media_in_library');
     if (empty($field)) {
       return;
     }
 
     $question = (string) $this->t('Do you want to remove translatability for the @field field of @media_type media?', [
       '@field' => $field->label(),
-      '@media_type' => $this->mediaTypeStorage->load('audio')->label(),
+      '@media_type' => $this->mediaTypeStorage->load('audio_file')->label(),
     ]);
     if ($io->confirm($question)) {
       $this->fieldStorage->save($field->setTranslatable(FALSE));

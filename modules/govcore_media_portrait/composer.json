@@ -1,6 +1,0 @@
-{
-    "name": "govcore/govcore_media_portrait",
-    "type": "drupal-module",
-    "description": "Portrait Image support for GovCore Media.",
-    "license": "GPL-2.0-or-later"
-}

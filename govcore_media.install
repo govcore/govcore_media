@@ -53,14 +53,11 @@ function govcore_media_update_8001() {
 function govcore_media_update_8002() {
   \Drupal::service('module_installer')
     ->install([
-      'govcore_media_audio',
-      'govcore_media_bulk_upload',
-      'govcore_media_document',
+      'features',
       'govcore_media_image',
-      'govcore_media_portrait',
-      'govcore_media_slider_image',
+      'govcore_media_instagram',
+      'govcore_media_twitter',
       'govcore_media_video',
-      'govcore_media_widescreen',
     ]);
 }
 
@@ -425,6 +422,10 @@ function govcore_media_update_dependencies() {
     ],
   ];
 
+  if (\Drupal::moduleHandler()->moduleExists('govcore_api')) {
+    $dependencies['media_entity'][8201]['govcore_api'] = 8002;
+    $dependencies['govcore_media'][8017]['govcore_api'] = 8002;
+  }
 
   return $dependencies;
 }

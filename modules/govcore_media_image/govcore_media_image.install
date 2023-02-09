@@ -19,6 +19,12 @@ function govcore_media_image_install() {
 
   $module_exists = [\Drupal::moduleHandler(), 'moduleExists'];
 
+  // Grants image browser access to the creator content role and the
+  // media_creator and media_manager roles.
+  if ($module_exists('govcore_roles')) {
+    govcore_media_image_modules_installed(['govcore_roles']);
+  }
+
   if ($module_exists('image_widget_crop')) {
     // Use the cropping widgets for every form display of the Image media type.
     $form_displays = \Drupal::entityTypeManager()

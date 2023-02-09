@@ -1,9 +1,0 @@
-status: 2
-pattern: '[media:field_media_image:entity:name]'
-escape: false
-preserve_titles: false
-save: 0
-chunk: '50'
-dependencies:
-  config:
-    - media.type.portrait

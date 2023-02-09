@@ -1,12 +1,10 @@
 langcode: en
 status: true
-dependencies:
-  module:
-    - video_embed_field
+dependencies: {  }
 id: remote_video
 label: 'Remote video'
 description: 'A video hosted by YouTube or Vimeo.'
-source: 'video_embed_field'
+source: 'oembed:video'
 queue_thumbnail_downloads: false
 new_revision: false
 source_configuration:

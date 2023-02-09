@@ -1,6 +1,0 @@
-name: 'Media Widescreen Image'
-core_version_requirement: '^8.8 || ^9'
-type: module
-package: GovCore
-description: 'Widescreen Image support for GovCore Media.'
-

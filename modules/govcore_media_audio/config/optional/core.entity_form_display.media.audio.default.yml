@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - field.field.media.audio.field_media_audio_file
-    - field.field.media.audio.field_media_audio_file_image
     - field.field.media.audio.field_media_in_library
     - media.type.audio
   module:
@@ -20,14 +19,6 @@ content:
     third_party_settings: {  }
     type: file_generic
     region: content
-  field_media_audio_file_image:
-    type: image_image
-    weight: 0
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: { }
-    region: content
   field_media_in_library:
     type: boolean_checkbox
     settings:
@@ -41,7 +32,7 @@ content:
     region: content
     settings:
       size: 60
-      placeholder: '[media:field_media_audio:entity:name]'
+      placeholder: ''
     third_party_settings: {  }
   status:
     type: boolean_checkbox

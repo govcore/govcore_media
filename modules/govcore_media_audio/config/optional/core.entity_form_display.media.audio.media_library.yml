@@ -3,53 +3,30 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_library
-    - field.field.media.audio.field_media_audio_file
-    - field.field.media.audio.field_media_audio_file_image
     - field.field.media.audio.field_media_in_library
-    - image.style.crop_one_one_thumb
     - media.type.audio
-  module:
-    - file
-    - image_widget_crop
-    - imce
-    - govcore_media
 id: media.audio.media_library
 targetEntityType: media
 bundle: audio
 mode: media_library
 content:
-  field_media_audio_file_image:
-    type: image_widget_crop
-    weight: 2
+  field_media_in_library:
+    type: boolean_checkbox
     settings:
-      show_crop_area: true
-      show_default_crop: true
-      preview_image_style: crop_one_one_thumb
-      crop_preview_image_style: crop_thumbnail
-      crop_list:
-        - one_one
-      crop_types_required:
-        - one_one
-      progress_indicator: throbber
-      warn_multiple_usages: false
+      display_label: true
+    weight: 1
+    third_party_settings: {  }
     region: content
-    third_party_settings:
-      govcore_media:
-        file_links: true
-        remove_button: true
-      imce:
-        enabled: false
   name:
     type: string_textfield
     weight: 0
     region: content
     settings:
       size: 60
-      placeholder: '[media:field_media_audio:entity:name]'
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
-  field_media_in_library: true
   field_media_audio_file: true
   path: true
   status: true

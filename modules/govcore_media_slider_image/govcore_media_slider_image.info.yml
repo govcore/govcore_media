@@ -1,5 +1,0 @@
-name: 'Media Slider Image'
-core_version_requirement: '^8.8 || ^9'
-type: module
-package: GovCore
-description: 'Slider Image support for GovCore Media.'

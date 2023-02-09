@@ -1,0 +1,9 @@
+services:
+  govcore_media_slideshow.uninstall_validator:
+    class: '\Drupal\govcore_media_slideshow\UninstallValidator'
+    arguments:
+      - '@entity_type.manager'
+      - '@string_translation'
+    tags:
+      - { name: module_install.uninstall_validator }
+    lazy: true

@@ -66,7 +66,7 @@ final class Update400 implements ContainerInjectionInterface {
    */
   public function requireDocumentMediaSourceField(StyleInterface $io) {
     /** @var \Drupal\Core\Field\FieldConfigInterface $field */
-    $field = $this->fieldStorage->load('media.document.field_media_document');
+    $field = $this->fieldStorage->load('media.document.field_document');
 
     if ($field && $field->isRequired() == FALSE) {
       $question = (string) $this->t('Do you want to make the @field field required on the @media_type media type?', [

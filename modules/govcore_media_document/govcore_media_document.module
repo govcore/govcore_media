@@ -7,55 +7,11 @@
 
 use Drupal\govcore_core\OverrideHelper as Override;
 use Drupal\govcore_media_document\Plugin\media\Source\File;
-use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
-use Drupal\Core\Field\FieldStorageDefinitionInterface;
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_media_source_info_alter().
  */
 function govcore_media_document_media_source_info_alter(array &$sources) {
   $sources['file']['input_match']['field_types'] = ['file'];
-  Override::pluginClass($sources['document'], File::class);
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- */
-function govcore_media_document_form_entity_browser_document_browser_form_alter(array &$form, FormStateInterface $form_state) {
-  $form['#attached']['library'][] = 'govcore_media/browser.styling';
-  $form['#attached']['library'][] = 'media_library/view';
-  $form['#attached']['library'][] = 'govcore_media/media_entity_browser_media_library/view';
-}
-
-/**
- * Implements hook_ENTITY_TYPE_presave().
- */
-function govcore_media_document_entity_form_display_presave(EntityFormDisplayInterface $display) {
-  // Don't do anything during config sync.
-  if (\Drupal::isConfigSyncing()) {
-    return;
-  }
-
-  $filter = function (FieldStorageDefinitionInterface $field) {
-    return $field->getType() == 'file';
-  };
-  $new_components = \Drupal::service('govcore.display_helper')
-    ->getNewFields($display, $filter);
-
-  foreach ($new_components as $key => $component) {
-    $display->setComponent($key, [
-      'type' => 'entity_browser',
-      'weight' => $component['weight'],
-      'settings' => [
-        'entity_browser' => 'document_browser',
-        'field_widget_edit' => TRUE,
-        'field_widget_remove' => TRUE,
-        'view_mode' => 'default',
-        'preview_image_style' => 'document_thumb',
-        'open' => TRUE,
-      ],
-      'region' => 'content',
-    ]);
-  }
+  Override::pluginClass($sources['file'], File::class);
 }

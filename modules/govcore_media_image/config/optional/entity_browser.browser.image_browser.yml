@@ -1,20 +1,18 @@
-uuid: 983345ce-e22f-410a-98ce-d0664f446ada
 langcode: en
 status: true
 dependencies:
   config:
     - views.view.image_browser
   module:
-    - govcore_media
     - views
 name: image_browser
 label: 'Image browser'
-display: iframe
+display: modal
 display_configuration:
-  width: '1070'
-  height: '500'
+  width: ''
+  height: ''
   link_text: 'Select Image(s)'
-  auto_open: true
+  auto_open: false
 selection_display: no_display
 selection_display_configuration: {  }
 widget_selector: tabs

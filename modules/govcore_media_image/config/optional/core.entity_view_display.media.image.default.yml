@@ -1,11 +1,8 @@
-uuid: 3e6eeca1-525f-494e-b76d-6cb65ffbb8f7
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.media.image.field_media_image
-    - field.field.media.image.field_media_in_library
-    - image.style.default_image_style
     - media.type.image
   module:
     - image
@@ -19,15 +16,13 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: default_image_style
+      image_style: ''
       image_link: ''
     third_party_settings: {  }
     region: content
 hidden:
   created: true
   field_media_in_library: true
-  langcode: true
   name: true
-  search_api_excerpt: true
   thumbnail: true
   uid: true

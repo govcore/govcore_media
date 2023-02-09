@@ -1,6 +1,8 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - media
 id: document
 label: Document
 description: 'A locally hosted document, such as a PDF.'

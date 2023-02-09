@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - field.field.media.audio.field_media_audio_file
-    - field.field.media.audio.field_media_audio_file_image
     - field.field.media.audio.field_media_in_library
     - media.type.audio
   module:
@@ -27,7 +26,6 @@ content:
 hidden:
   created: true
   field_media_in_library: true
-  field_media_audio_file_image: true
   name: true
   thumbnail: true
   uid: true

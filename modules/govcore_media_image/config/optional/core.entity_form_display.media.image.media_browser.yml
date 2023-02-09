@@ -1,50 +1,19 @@
-uuid: 2c2d515e-95df-4c2b-9528-eeab2f2450b6
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_browser
-    - field.field.media.image.field_media_image
     - field.field.media.image.field_media_in_library
+    - field.field.media.image.field_media_image
     - image.style.medium
     - media.type.image
   module:
-    - govcore_media
-    - image_widget_crop
-    - imce
-    - govcore_media
-    - path
+    - image
 id: media.image.media_browser
 targetEntityType: media
 bundle: image
 mode: media_browser
 content:
-  field_media_image:
-    type: image_widget_crop
-    weight: 0
-    settings:
-      show_crop_area: true
-      show_default_crop: true
-      preview_image_style: medium
-      crop_preview_image_style: crop_thumbnail
-      crop_list:
-        - four_one
-        - four_three
-        - freeform
-        - one_to_one
-        - profile_photo
-        - sixteen_nine
-        - two_to_one
-      progress_indicator: throbber
-      crop_types_required: {  }
-      warn_multiple_usages: false
-    third_party_settings:
-      govcore_media:
-        file_links: true
-        remove_button: true
-      imce:
-        enabled: false
-    region: content
   field_media_in_library:
     type: boolean_checkbox
     weight: 4
@@ -52,13 +21,17 @@ content:
       display_label: true
     third_party_settings: {  }
     region: content
-  langcode:
-    type: language_select
-    weight: 2
-    region: content
+  field_media_image:
+    type: image_image
+    weight: 0
     settings:
-      include_locked: true
-    third_party_settings: {  }
+      preview_image_style: medium
+      progress_indicator: throbber
+    third_party_settings:
+      govcore_media:
+        file_links: false
+        remove_button: false
+    region: content
   name:
     type: string_textfield
     weight: 3
@@ -67,27 +40,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
-  path:
-    type: path
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  revision_log_message:
-    type: string_textarea
-    weight: 25
-    settings:
-      rows: 4
-      placeholder: ''
-    region: content
-    third_party_settings: {  }
-  status:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 100
-    region: content
-    third_party_settings: {  }
 hidden:
   created: true
   uid: true

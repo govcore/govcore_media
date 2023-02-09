@@ -9,14 +9,3 @@ services:
     tags:
       -
         name: event_subscriber
-  govcore_media.media_name:
-    class: Drupal\govcore_media\MediaName
-    arguments: [ '@entity_field.manager', '@config.factory', '@messenger', '@logger.factory' ]
-  govcore_media.media_redirect_subscriber:
-    class: Drupal\govcore_media\EventSubscriber\MediaRedirectSubscriber
-    arguments: ['@file_system']
-    tags:
-      - { name: event_subscriber }
-  logger.channel.govcore_media:
-    parent: logger.channel_base
-    arguments: [ 'media_name' ]

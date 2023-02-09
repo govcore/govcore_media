@@ -25,9 +25,6 @@ use Drupal\media\Entity\MediaType;
 use Drupal\media\MediaInterface;
 use Drupal\media\MediaTypeInterface;
 use Drupal\views\ViewExecutable;
-use Drupal\govcore_media\MediaNameInterface;
-use Drupal\govcore_media\MediaName;
-use Drupal\Core\Config\Config;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
@@ -87,7 +84,8 @@ function govcore_media_field_widget_entity_browser_entity_reference_form_alter(a
     ->getFieldStorageDefinition()
     ->getCardinality();
 
-  $element['current']['#theme_wrappers'] = [
+  $theme_wrappers = [];
+  $theme_wrapper_extra_data = [
     'details' => [
       '#attributes' => [
         'open' => TRUE,
@@ -96,6 +94,21 @@ function govcore_media_field_widget_entity_browser_entity_reference_form_alter(a
       '#summary_attributes' => [],
     ],
   ];
+
+  // Add the extra theme wrapper data in all the render elements.
+  foreach ($element['current']['#theme_wrappers'] as $key => $render_element) {
+    // If the render element is already an array then there is no need to make
+    // it an array.
+    if (is_array($render_element)) {
+      $theme_wrappers[$key] = $render_element + $theme_wrapper_extra_data;
+    }
+    // Make this an array if it is not.
+    else {
+      $theme_wrappers[$render_element] = $theme_wrapper_extra_data;
+    }
+  }
+// Set the modified theme wrapper data.
+  $element['current']['#theme_wrappers'] = $theme_wrappers;
 }
 
 /**
@@ -106,11 +119,10 @@ function govcore_media_modules_installed(array $modules) {
   if (Drupal::isConfigSyncing()) {
     return;
   }
-  if (in_array('image_widget_crop', $modules)) {
-    Config::forModule('govcore_media_image')
-      ->optional()
-      ->getEntity('crop_type', 'freeform')
-      ->save();
+
+  if (in_array('govcore_roles', $modules, TRUE)) {
+    Drupal::service('govcore.content_roles')
+      ->grantPermissions('creator', ['use text format rich_text']);
   }
 }
 
@@ -303,9 +315,6 @@ function govcore_media_form_alter(array &$form, FormStateInterface $form_state) 
 function govcore_media_entity_base_field_info_alter(array &$fields, EntityTypeInterface $entity_type) {
   if ($entity_type->id() === 'media' && array_key_exists('revision_log_message', $fields)) {
     $fields['revision_log_message']->setDisplayConfigurable('form', TRUE);
-  }
-  if ($entity_type->id() === 'media' && !empty($fields['name'])) {
-    $fields['name']->setRequired(FALSE);
   }
 }
 
@@ -529,48 +538,3 @@ function govcore_media_views_pre_view(ViewExecutable $view, $display_id) {
     $view->display_handler->setOption('filters', $filters);
   }
 }
-
-/**
- * Implements hook_form_BASE_FORM_ID_alter().
- */
-function govcore_media_form_media_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
-  // If the media name is accessible, it could be overridden.
-  if (array_key_exists('name', $form) && $form['name']['#access']) {
-    /** @var \Drupal\govcore_media\MediaNameInterface $mediaNameService */
-    $mediaNameService = \Drupal::service('govcore_media.media_name');
-    $mediaNameService->alterMediaEditForm($form_state);
-
-    // Always set the custom submit handler if the original name has
-    // been provided to the build info.
-    $buildInfo = $form_state->getBuildInfo();
-    if (
-      array_key_exists(MediaNameInterface::MEDIA_NAME_ORIGINAL_VALUE, $buildInfo) &&
-      !empty($buildInfo[MediaNameInterface::MEDIA_NAME_ORIGINAL_VALUE])
-    ) {
-      $form['actions']['submit']['#submit'][] = '_govcore_media_form_submit';
-    }
-  }
-}
-
-/**
- * Custom submit handler for the Media edit form.
- */
-function _govcore_media_form_submit(array &$form, FormStateInterface $form_state) {
-  /** @var \Drupal\govcore_media\MediaNameInterface $mediaNameService */
-  $mediaNameService = \Drupal::service('govcore_media.media_name');
-  $mediaNameService->mediaEditFormSubmitHandler($form_state);
-}
-
-/**
- * Implements hook_entity_bundle_field_info_alter().
- *
- * Make name optional, it will be checked through validation.
- * Some Media bundles are not covered if this hook is not implemented
- * complementary to hook_entity_base_field_info_alter().
- */
-function govcore_media_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
-  if ($entity_type->id() === 'media' && !empty($fields['name'])) {
-    $fields['name']->setRequired(FALSE);
-  }
-}
-
