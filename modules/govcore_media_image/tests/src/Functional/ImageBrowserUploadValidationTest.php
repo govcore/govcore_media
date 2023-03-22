@@ -13,18 +13,22 @@ use Drupal\Tests\BrowserTestBase;
  *
  * @group govcore_media
  * @group govcore_media_image
+ *
+ * @requires module entity_browser
  */
 class ImageBrowserUploadValidationTest extends BrowserTestBase {
 
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'classy';
+  protected $defaultTheme = 'stark';
 
   /**
    * {@inheritdoc}
    */
   protected static $modules = [
+    'entity_browser',
+    'inline_entity_form',
     'govcore_media_image',
     'node',
   ];

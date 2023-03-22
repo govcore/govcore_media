@@ -12,12 +12,6 @@ use Drupal\media\MediaTypeInterface;
 
 /**
  * An Entity Browser widget for creating media entities from uploaded files.
- *
- * @EntityBrowserWidget(
- *   id = "file_upload",
- *   label = @Translation("File Upload"),
- *   description = @Translation("Allows creation of media entities from file uploads."),
- * )
  */
 class FileUpload extends EntityFormProxy {
 

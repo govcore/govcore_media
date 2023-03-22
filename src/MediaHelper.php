@@ -4,6 +4,7 @@ namespace Drupal\govcore_media;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileSystemInterface;
+use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
 use Drupal\file\Plugin\Field\FieldType\FileItem;
 use Drupal\govcore_media\Exception\IndeterminateBundleException;
@@ -179,11 +180,25 @@ class MediaHelper {
     }
     $destination .= $file->getFilename();
 
+    // If the core file_move() function has already been called, the file entity
+    // might have been replaced by another one that has the same ID, but a
+    // different URI. So reload the file entity to ensure we're using the most
+    // up-to-date URI.
+    /** @var \Drupal\file\FileInterface $file */
+    $file = File::load($file->id());
+
     if ($destination == $file->getFileUri()) {
       return $file;
     }
     else {
-      $file = file_move($file, $destination, $replace);
+      if (\Drupal::hasService('file.repository')) {
+        // phpcs:ignore
+        $file = \Drupal::service('file.repository')->move($file, $destination, $replace);
+      }
+      else {
+        // @phpstan-ignore-next-line
+        $file = \Drupal::service('file.repository')->move($file, $destination, $replace);
+      }
 
       if ($file) {
         $field->setValue($file);

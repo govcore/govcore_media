@@ -6,12 +6,6 @@ use Drupal\Core\Form\FormStateInterface;
 
 /**
  * An Entity Browser widget for creating media entities from embed codes.
- *
- * @EntityBrowserWidget(
- *   id = "embed_code",
- *   label = @Translation("Embed Code"),
- *   description = @Translation("Allows creation of media entities from embed codes."),
- * )
  */
 class EmbedCode extends EntityFormProxy {
 
@@ -45,7 +39,7 @@ class EmbedCode extends EntityFormProxy {
    * {@inheritdoc}
    */
   protected function getCurrentValue(FormStateInterface $form_state) {
-    $value = parent::getCurrentValue($form_state);
+    $value = parent::getCurrentValue($form_state) ?: '';
     return trim($value);
   }
 

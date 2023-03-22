@@ -18,6 +18,9 @@ use Drupal\Tests\govcore_media\Traits\EntityBrowserTrait;
  *
  * @group govcore_media
  * @group govcore_media_image
+ *
+ * @requires module image_widget_crop
+ * @requires module entity_browser
  */
 class ImageBrowserCardinalityTest extends WebDriverTestBase {
 
@@ -26,13 +29,15 @@ class ImageBrowserCardinalityTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'classy';
+  protected $defaultTheme = 'stark';
 
   /**
    * {@inheritdoc}
    */
   protected static $modules = [
+    'entity_browser',
     'image_widget_crop',
+    'inline_entity_form',
     'govcore_media_image',
     'node',
   ];
@@ -40,7 +45,7 @@ class ImageBrowserCardinalityTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->createContentType(['type' => 'page']);
@@ -129,7 +134,8 @@ class ImageBrowserCardinalityTest extends WebDriverTestBase {
     ]);
     $this->drupalLogin($account);
 
-    module_load_install('govcore_media_image');
+    $this->container->get('module_handler')
+      ->loadInclude('govcore_media_image', 'install');
     govcore_media_image_install();
   }
 

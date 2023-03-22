@@ -10,7 +10,6 @@ use Drupal\Tests\BrowserTestBase;
 /**
  * Tests the add and edit forms for all our shipped media types.
  *
- * @group govcore
  * @group govcore_media
  */
 class AddEditFormTest extends BrowserTestBase {
@@ -30,6 +29,7 @@ class AddEditFormTest extends BrowserTestBase {
     'govcore_media_instagram',
     'govcore_media_twitter',
     'govcore_media_video',
+    'path',
   ];
 
   /**

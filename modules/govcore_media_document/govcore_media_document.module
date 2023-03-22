@@ -5,7 +5,7 @@
  * Support for file media assets in GovCore.
  */
 
-use Drupal\govcore_core\OverrideHelper as Override;
+use Drupal\govcore_media\Override;
 use Drupal\govcore_media_document\Plugin\media\Source\File;
 
 /**

@@ -7,7 +7,6 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslationInterface;
-use Drupal\govcore_core\Element;
 use Drupal\govcore_media\Exception\IndeterminateBundleException;
 use Drupal\govcore_media\MediaHelper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -80,17 +79,11 @@ class BulkUploadForm extends FormBase {
       '#type' => 'submit',
       '#value' => $this->t('Continue'),
     ];
-
-    // Support both Drupal 8.7's API and its antecedents. We need to call
-    // file_upload_max_size() as a string in order to prevent deprecation
-    // testing failures.
-    $max_size = version_compare(\Drupal::VERSION, '8.7.0', '>=')
-      ? Environment::getUploadMaxSize()
-      : call_user_func('file_upload_max_size');
+    $max_size = Environment::getUploadMaxSize();
 
     $variables = [
       '@max_size' => static::bytesToString($max_size),
-      '@extensions' => Element::oxford($extensions, $this->t('and')),
+      '@extensions' => implode(', ', $extensions),
     ];
     $form['dropzone']['#description'] = $this->t('You can upload as many files as you like. Each file can be up to @max_size in size. The following file extensions are accepted: @extensions', $variables);
 
@@ -153,7 +146,7 @@ class BulkUploadForm extends FormBase {
       /** @var \Drupal\media\MediaInterface $entity */
       $redirect = array_shift($bulk_create)->toUrl('edit-form', [
         'query' => [
-          'bulk_create' => $bulk_create,
+          'bulk_create' => implode(',', $bulk_create),
         ],
       ]);
       $form_state->setRedirectUrl($redirect);

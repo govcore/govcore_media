@@ -4,4 +4,4 @@ govcore_media.settings:
     _title: GovCore Media
     _form: '\Drupal\govcore_media\Form\SettingsForm'
   requirements:
-    _is_administrator: 'true'
+    _permission: 'administer site configuration'

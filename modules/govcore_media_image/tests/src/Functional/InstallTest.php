@@ -9,6 +9,8 @@ use Drupal\Tests\BrowserTestBase;
  *
  * @group govcore_media
  * @group govcore_media_image
+ *
+ * @requires module image_widget_crop
  */
 class InstallTest extends BrowserTestBase {
 

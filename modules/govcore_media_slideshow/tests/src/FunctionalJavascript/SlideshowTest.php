@@ -12,6 +12,8 @@ use Drupal\Tests\media\Traits\MediaTypeCreationTrait;
  *
  * @group govcore_media_slideshow
  * @group govcore_media
+ *
+ * @requires module slick_entityreference
  */
 class SlideshowTest extends WebDriverTestBase {
 
@@ -20,7 +22,7 @@ class SlideshowTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'classy';
+  protected $defaultTheme = 'stark';
 
   /**
    * {@inheritdoc}
@@ -34,7 +36,7 @@ class SlideshowTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->createMediaType('test', [
@@ -78,6 +80,8 @@ class SlideshowTest extends WebDriverTestBase {
    * Tests creating a slideshow block with media items in it.
    */
   public function testSlideshow() {
+    $this->markTestSkipped('This test is disabled until GovCore Media uses GitLab CI and can reliably install front-end dependencies.');
+
     $page = $this->getSession()->getPage();
     $assert_session = $this->assertSession();
 

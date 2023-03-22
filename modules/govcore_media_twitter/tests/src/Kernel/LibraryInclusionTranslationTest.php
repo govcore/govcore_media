@@ -9,6 +9,8 @@ use Drupal\media\Entity\Media;
 /**
  * @group govcore_media
  * @group govcore_media_twitter
+ *
+ * @requires module media_entity_twitter
  */
 class LibraryInclusionTranslationTest extends KernelTestBase {
 
@@ -20,7 +22,7 @@ class LibraryInclusionTranslationTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     $this->installEntitySchema('user');
 

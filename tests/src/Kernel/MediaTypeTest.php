@@ -2,8 +2,9 @@
 
 namespace Drupal\Tests\govcore_media\Kernel;
 
+use Drupal\Core\Serialization\Yaml;
+use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\govcore_core\ConfigHelper as Config;
 use Drupal\Tests\media\Traits\MediaTypeCreationTrait;
 
 /**
@@ -22,7 +23,6 @@ class MediaTypeTest extends KernelTestBase {
     'field',
     'file',
     'image',
-    'govcore_core',
     'govcore_media',
     'media',
     'user',
@@ -31,12 +31,12 @@ class MediaTypeTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  public function setUp(): void {
     parent::setUp();
 
-    Config::forModule('govcore_media')
-      ->getEntity('field_storage_config', 'media.field_media_in_library')
-      ->save();
+    $values = file_get_contents(__DIR__ . '/../../../config/install/field.storage.media.field_media_in_library.yml');
+    $values = Yaml::decode($values);
+    FieldStorageConfig::create($values)->save();
   }
 
   /**

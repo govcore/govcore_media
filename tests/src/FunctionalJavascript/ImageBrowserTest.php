@@ -12,6 +12,9 @@ use Drupal\Tests\govcore_media\Traits\EntityBrowserTrait;
  * Tests the image browser shipped with GovCore Media Image.
  *
  * @group govcore_media
+ *
+ * @requires module entity_browser
+ * @requires module image_widget_crop
  */
 class ImageBrowserTest extends WebDriverTestBase {
 
@@ -20,13 +23,15 @@ class ImageBrowserTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'classy';
+  protected $defaultTheme = 'stark';
 
   /**
    * {@inheritdoc}
    */
   protected static $modules = [
+    'entity_browser',
     'image_widget_crop',
+    'inline_entity_form',
     'govcore_media_image',
     'govcore_roles',
   ];
@@ -34,7 +39,7 @@ class ImageBrowserTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->drupalCreateContentType(['type' => 'page']);

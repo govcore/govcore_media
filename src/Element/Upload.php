@@ -2,6 +2,7 @@
 
 namespace Drupal\govcore_media\Element;
 
+use Drupal\Core\File\Event\FileUploadSanitizeNameEvent;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element\File as FileElement;
 use Drupal\file\Entity\File;
@@ -97,13 +98,14 @@ class Upload extends FileElement {
     if ($upload instanceof UploadedFile) {
       $destination = $file_system->realPath($element['#upload_location']);
 
-      $name = file_munge_filename($upload->getClientOriginalName(), NULL);
-      // Support both Drupal 8.7's FileSystemInterface API, and its earlier
-      // antecedents. We need to call file_create_filename() in an obscure way
-      // to prevent deprecation testing failures.
-      $name = version_compare(\Drupal::VERSION, '8.7.0', '>=')
-        ? $file_system->createFilename($name, $destination)
-        : call_user_func('file_create_filename', $name, $destination);
+      $event = new FileUploadSanitizeNameEvent($upload->getClientOriginalName(), '');
+      /** @var \Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher $event_dispatcher */
+      // phpcs:ignore
+      $event_dispatcher = \Drupal::service('event_dispatcher');
+      $event_dispatcher->dispatch($event);
+
+      $name = $event->getFilename();
+      $name = $file_system->createFilename($name, $destination);
       $name = $upload->move($destination, $name)->getFilename();
 
       $uri = $element['#upload_location'];

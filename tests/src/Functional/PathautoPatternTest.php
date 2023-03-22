@@ -10,6 +10,8 @@ use Drupal\Tests\media\Traits\MediaTypeCreationTrait;
  * Tests that all media items have a /media/BUNDLE/ID Pathauto pattern.
  *
  * @group govcore_media
+ *
+ * @requires module pathauto
  */
 class PathautoPatternTest extends BrowserTestBase {
 
@@ -36,7 +38,7 @@ class PathautoPatternTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     $this->config('media.settings')->set('standalone_url', TRUE)->save();
     drupal_flush_all_caches();

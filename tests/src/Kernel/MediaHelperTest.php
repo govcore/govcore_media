@@ -35,7 +35,7 @@ class MediaHelperTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     $this->installEntitySchema('file');
 
@@ -68,7 +68,7 @@ class MediaHelperTest extends KernelTestBase {
 
     $media->set($source_field->getName(), $file->id());
 
-    $this->assertDirectoryNotExists('public://wambooli');
+    $this->assertDirectoryDoesNotExist('public://wambooli');
     MediaHelper::prepareFileDestination($media);
     $this->assertDirectoryExists('public://wambooli');
   }

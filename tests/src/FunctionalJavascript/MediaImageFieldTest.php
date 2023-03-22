@@ -30,19 +30,12 @@ class MediaImageFieldTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
-    // The media.settings:standalone_url setting was added in Drupal 8.7. To
-    // avoid config schema errors, we should only set the option if it actually
-    // exists to begin with.
-    $settings = $this->config('media.settings');
-    if ($settings->get('standalone_url') === FALSE) {
-      $settings->set('standalone_url', TRUE)->save();
-      // Flush all caches to rebuild the entity type definitions and routing
-      // tables, which will expose the canonical media entity route.
-      drupal_flush_all_caches();
-    }
+    $this->config('media.settings')
+      ->set('standalone_url', TRUE)
+      ->save();
   }
 
   /**
@@ -88,15 +81,14 @@ class MediaImageFieldTest extends WebDriverTestBase {
       ->save();
 
     $account = $this->createUser([
+      'access content',
       'create media',
       'update media',
     ]);
     $this->drupalLogin($account);
 
-    $name = $this->randomString();
-
     $this->drupalGet('/media/add/remote_video');
-    $page->fillField('Name', $name);
+    $page->fillField('Name', $this->randomString());
     $page->fillField('Video URL', 'https://www.youtube.com/watch?v=z9qY4VUZzcY');
     $this->assertNotEmpty($assert_session->waitForField('Image'));
     $path = realpath(__DIR__ . '/../../files/test.jpg');

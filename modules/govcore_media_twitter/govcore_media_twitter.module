@@ -5,7 +5,7 @@
  * Support for tweets as media entities in GovCore.
  */
 
-use Drupal\govcore_core\OverrideHelper as Override;
+use Drupal\govcore_media\Override;
 use Drupal\govcore_media\Form\AddByUrlForm;
 use Drupal\govcore_media_twitter\Plugin\media\Source\Twitter;
 

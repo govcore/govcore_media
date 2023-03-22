@@ -9,6 +9,8 @@ use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
  *
  * @group govcore_media
  * @group govcore_media_bulk_upload
+ *
+ * @requires module dropzonejs
  */
 class BulkUploadTest extends WebDriverTestBase {
 
@@ -32,7 +34,7 @@ class BulkUploadTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     $this->drupalPlaceBlock('local_actions_block');
   }

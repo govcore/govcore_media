@@ -11,6 +11,8 @@ use Drupal\Tests\BrowserTestBase;
  *
  * @group govcore_media
  * @group govcore_media_instagram
+ *
+ * @requires module media_entity_instagram
  */
 class LibraryInclusionTranslationTest extends BrowserTestBase {
 

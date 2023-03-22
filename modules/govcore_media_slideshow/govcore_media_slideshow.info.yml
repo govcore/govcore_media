@@ -1,5 +1,5 @@
 name: 'Media Slideshow'
-core_version_requirement: '^8.8 || ^9'
+core_version_requirement: '^9.3 || ^10'
 type: module
 description: 'Provides the ability to create slideshows and carousels of media items.'
 package: GovCore
@@ -8,7 +8,7 @@ dependencies:
   - govcore_media:govcore_media
   - slick_entityreference:slick_entityreference
 
-# Information added by Drupal.org packaging script on 2021-02-08
-version: '8.x-4.6'
+# Information added by Drupal.org packaging script on 2023-01-10
+version: '5.0.0'
 project: 'govcore_media'
-datestamp: 1612802526
+datestamp: 1673384213

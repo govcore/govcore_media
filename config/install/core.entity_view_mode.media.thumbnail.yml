@@ -3,9 +3,7 @@ status: true
 dependencies:
   module:
     - media
-third_party_settings:
-  govcore_core:
-    description: ''
+third_party_settings: { }
 id: media.thumbnail
 label: Thumbnail
 targetEntityType: media
